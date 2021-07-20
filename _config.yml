@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: Therefore
+subtitle: 'I think, therefore I am.'
 description: ''
 keywords:
-author: John Doe
+author: Welkin
 language: en
 timezone: ''
 
@@ -101,7 +101,7 @@ plugins:
   hexo-generator-feed
   hexo-generator-sitemap
 
-theme: landscape
+theme: jacman
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
