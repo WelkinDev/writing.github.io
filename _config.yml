@@ -101,8 +101,21 @@ plugins:
   hexo-generator-feed
   hexo-generator-sitemap
 
+#sitemap
+sitemap:
+  path: sitemap.xml
+
+#feed
+atom:
+  type: atom
+  path: atom.xml
+  limit: 20
+
 theme: jacman
 
+auto_dir_categorize:
+  enable: true
+  force: false
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
