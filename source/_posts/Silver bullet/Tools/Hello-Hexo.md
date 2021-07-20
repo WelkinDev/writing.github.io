@@ -1,7 +1,7 @@
 ---
 title: Hello Hexo
 date: 2021-07-20 17:32:13
-tags: tools, hexo
+tags: hexo
 ---
 
 This site is built using [Hexo](https://hexo.io/), You can check [documentation](https://hexo.io/docs/) for more info.If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or [GitHub](https://github.com/hexojs/hexo/issues).
