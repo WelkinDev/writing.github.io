@@ -112,6 +112,7 @@ atom:
   limit: 20
 
 theme: jacman
+#theme: pure
 
 auto_dir_categorize:
   enable: true
