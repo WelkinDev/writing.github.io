@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/08/19/Program/iOS/iOS-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%90%8C%E6%AD%A5%E6%8E%A2%E8%AE%A8/</loc>
+    
+    <lastmod>2021-09-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2019/01/03/Silver%20bullet/Tools/Windows/Wox-Windows%E4%B8%8A%E7%9A%84%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</loc>
     
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-07-27</lastmod>
     
   </url>
   
@@ -25,7 +32,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -33,21 +40,21 @@
   
   <url>
     <loc>http://example.com/tags/regulation/</loc>
-    <lastmod>2021-07-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/Wox/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/hexo/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/Wox/</loc>
+    <lastmod>2021-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -56,28 +63,42 @@
   
   <url>
     <loc>http://example.com/categories/Regulation/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Tools/</loc>
-    <lastmod>2021-07-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/Tools/Windows/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Tools/Web/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/Tools/Windows/</loc>
+    <lastmod>2021-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/Program/</loc>
+    <lastmod>2021-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/Program/iOS/</loc>
+    <lastmod>2021-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
