@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Welkin">
+    
+    <title>
+        
+            Java编译、反编译与混淆 |
+        
+        Thinkful
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo_1.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"thinkful.ink","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/author.png","favicon":"/images/logo_1.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep thinking and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Therefore" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo_1.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+                Thinkful
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Java编译、反编译与混淆</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/author.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Welkin</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-09-28 19:52:26
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Java/">Java</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/Java/Compile/">Compile</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/Java/Compile/Decompile/">Decompile</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/Java/Compile/Decompile/Anti-Decompile/">Anti-Decompile</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java/">Java</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>先要知道Java编译、执行流程，才能找到切入点反编译，知道从哪些点儿进行反编译，才能找到准确的点进行防护。<br>按照这个思路，先看编译执行过程。</p>
+<h3 id="Java编译与执行过程"><a href="#Java编译与执行过程" class="headerlink" title="Java编译与执行过程"></a>Java编译与执行过程</h3><ul>
+<li>创建java文件并添加测试代码</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> touch Simple.java</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi Simple.java</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Simple</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Inner inner = <span class="keyword">new</span> Inner();</span><br><span class="line">        inner.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello, Java.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后编译此文件并执行查看效果</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> javac Simple.java</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> java Simple</span></span><br><span class="line">Hello, Java.</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="编译-What-happens-at-compile-time-in-java"><a href="#编译-What-happens-at-compile-time-in-java" class="headerlink" title="编译: What happens at compile time in java"></a>编译: What happens at compile time in java</h4><p>执行<code>javac</code>命令时发生了什么呢？如图</p>
+<p><img src="https://i.loli.net/2021/09/28/NlQaT6DrqHzLAm4.jpg"></p>
+<p>或精简为下图<br><img src="https://i.loli.net/2021/09/28/4PcJsnkepvZWKUS.png" alt="Compile"></p>
+<p>本质上是将.java编译成为了字节码(byte code).class文件</p>
+<p>此时我们使用<code>vi</code>命令查看时，看到的是如下乱码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vi Simple.class</span></span><br><span class="line">Êþº¾^@^@^@&lt;^@^U</span><br><span class="line">^@^B^@^C^G^@^D^L^@^E^@^F^A^@^Pjava/lang/Object^A^@^F&lt;init&gt;^A^@^C()V^G^@^H^A^@^EInner</span><br><span class="line">^@^G^@^C</span><br><span class="line">^@^G^@^K^L^@^L^@^F^A^@^HsayHello^G^@^N^A^@^FSimple^A^@^DCode^A^@^OLineNumberTable^A^@^Dmain^A^@^V([Ljava/lang/String;)V^A^@</span><br><span class="line">SourceFile^A^@^KSimple.java^@!^@^M^@^B^@^@^@^@^@^B^@^A^@^E^@^F^@^A^@^O^@^@^@^]^@^A^@^A^@^@^@^E*·^@^A±^@^@^@^A^@^P^@^@^@^F^@^A^@^@^@^A^@ ^@^Q^@^R^@^A^@^O^@^@^@-^@^B^@^B^@^@^@^M»^@^GY·^@        L+¶^@</span><br><span class="line">±^@^@^@^A^@^P^@^@^@^N^@^C^@^@^@^C^@^H^@^D^@^L^@^E^@^A^@^S^@^@^@^B^@^T</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/09/28/aibILGWAuyCMn4j.jpg"></p>
+<h4 id="执行-What-happens-at-runtime-in-java"><a href="#执行-What-happens-at-runtime-in-java" class="headerlink" title="执行: What happens at runtime in java"></a>执行: What happens at runtime in java</h4><p>class文件的执行流程可以参考如下两图<br><img src="https://i.loli.net/2021/09/28/nIKo2vVh1QclNTW.jpg"><br><img src="https://i.loli.net/2021/09/28/JVaZ3e2NfUbAQGE.png"></p>
+<p>至此，我们基本了解了Java从编译到运行的全过程。从中我们可以看出，因为class文件最终是要在JVM中执行的，中间无论是经过了怎样的加密，最终执行前都要解密，所以加密只会推迟被反编的时间，但是不能完全防止。<br>混淆会改变类、接口、枚举的名称，以及其中的方法、属性名称，以降低可读性的方式来保护我们的源码，这种方式目前是非常普遍的。</p>
+<h3 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h3><p>常见的反编译工具有很多<br>比较老牌的如<a class="link"   target="_blank" rel="noopener" href="https://github.com/java-decompiler/jd-core" >JD-Core<i class="fas fa-external-link-alt"></i></a>，对应的GUI工具为<a class="link"   target="_blank" rel="noopener" href="https://github.com/java-decompiler/jd-gui" >JD-GUI<i class="fas fa-external-link-alt"></i></a>，但是这款工具已经很久不更新了</p>
+<p>在MacOS Monterey上已经无法使用JD，所以此处使用的是<a class="link"   target="_blank" rel="noopener" href="https://github.com/skylot/jadx" >jadx<i class="fas fa-external-link-alt"></i></a>，可以<a class="link"   target="_blank" rel="noopener" href="https://github.com/skylot/jadx/releases/tag/v1.2.0" >下载<i class="fas fa-external-link-alt"></i></a>对应的系统版本</p>
+<p><img src="https://i.loli.net/2021/09/28/ATkiwnKLxSqFbWI.jpg"></p>
+<p>如图为解压后的目录结构，<code>cd</code>至<code>bin</code>目录后，执行<code>./jadx-gui</code>即可启动<br><img src="https://i.loli.net/2021/09/28/PcC8oaiOtU5XkK2.jpg"></p>
+<p>选中<code>Sample.class</code>和<code>Inner.class</code>后，OpenFile即可<br><img src="https://i.loli.net/2021/09/29/VjSP5zFbWoMhEOY.jpg"></p>
+<p>如此，反编译完成</p>
+<h3 id="Jar包"><a href="#Jar包" class="headerlink" title="Jar包"></a>Jar包</h3><h4 id="What-is-JAR"><a href="#What-is-JAR" class="headerlink" title="What is JAR?"></a>What is JAR?</h4><p>JAR(<strong>J</strong>ava <strong>AR</strong>chive)本质上是一个ZIP文档，其中包含了class文件，也可以包含资源文件。</p>
+<h4 id="创建JAR包"><a href="#创建JAR包" class="headerlink" title="创建JAR包"></a>创建JAR包</h4><p>新建<code>manifest.txt</code>文件，并添加如下内容</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: <span class="number">1.0</span></span><br><span class="line">Main-Class: Simple</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>jar cmf Simple.jar manifest.txt *.class</code>命令将上述步骤中的两个class文件生成<code>Simple.jar</code>文件<br>添加<code>manifest</code>是为了让jar包可执行（manifest指明了jar包执行入口）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">已添加清单</span><br><span class="line">正在添加: Inner.class(输入 = 396) (输出 = 285)(压缩了 28%)</span><br><span class="line">正在添加: Simple.class(输入 = 314) (输出 = 242)(压缩了 22%)</span><br></pre></td></tr></table></figure>
+<p>此时生成的jar包可以使用同样的方法进行反编译。</p>
+<p>使用<code>java -jar Simple.jar</code>可以执行jar包，效果与<code>Simple.class</code>相同</p>
+<h3 id="混淆-Obfuscation"><a href="#混淆-Obfuscation" class="headerlink" title="混淆 Obfuscation"></a>混淆 Obfuscation</h3><p>此处使用<a class="link"   target="_blank" rel="noopener" href="https://github.com/Guardsquare/proguard#-quick-start" >ProGuard<i class="fas fa-external-link-alt"></i></a>进行jar包混淆，可以从<a class="link"   target="_blank" rel="noopener" href="https://sourceforge.net/projects/proguard/" >sourceforge下载<i class="fas fa-external-link-alt"></i></a>或者Github下载相应的包。</p>
+<p><img src="https://i.loli.net/2021/09/29/h94WVcByqdETJFS.jpg"></p>
+<p>切换至<code>lib</code>目录后，新建配置文件<code>touch myconfig.pro</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-injar /Users/liyanqing/Documents/Test/JavaTest/Simple.jar</span><br><span class="line">-outjars /Users/liyanqing/Documents/Test/JavaTest/out/Simple.jar</span><br><span class="line"></span><br><span class="line">-dontshrink</span><br><span class="line">-dontoptimize</span><br><span class="line">-dontpreverify</span><br><span class="line">-ignorewarnings </span><br><span class="line">-verbose</span><br><span class="line"></span><br><span class="line">-keep public class None</span><br></pre></td></tr></table></figure>
+
+<p>在混淆后，再反编译出的内容就会变的可读性极差。<br><img src="https://i.loli.net/2021/09/29/7HOyo6qgVxZGnM4.jpg"></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><strong>Compile</strong><br><a class="link"   target="_blank" rel="noopener" href="https://wiki.jikexueyuan.com/project/java-vm/java-debug.html" >Java 代码编译和执行的整个过程<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>Anti-Decompile</strong><br><a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/19766494" >有哪些防止反编译 Java 类库 jar 文件的办法？<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://dzone.com/articles/protect-your-java-code-from-re" >Protect Your Java Code From Reverse Engineering<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>jar</strong><br><a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/jar/jarGuide.html" >JAR File Overview<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/JAR_(file_format)" >JAR (file format)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/deployment/jar/build.html" >Creating a JAR File<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/deployment/jar/modman.html" >Modifying a Manifest File<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10125639/how-to-create-a-jar-file-using-the-terminal" >Create JAR with manifest<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>ProGuard</strong><br><a class="link"   target="_blank" rel="noopener" href="https://www.guardsquare.com/manual/configuration/examples" >ProGuard使用手册<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/09/24/Program/Common%20Sense/%E8%BD%AF%E4%BB%B6License%E7%94%9F%E6%88%90%E5%AE%9E%E8%B7%B5/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">软件License生成实践</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Welkin</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E7%BC%96%E8%AF%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">Java编译与执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91-What-happens-at-compile-time-in-java"><span class="nav-text">编译: What happens at compile time in java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C-What-happens-at-runtime-in-java"><span class="nav-text">执行: What happens at runtime in java</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="nav-text">反编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jar%E5%8C%85"><span class="nav-text">Jar包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-JAR"><span class="nav-text">What is JAR?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAJAR%E5%8C%85"><span class="nav-text">创建JAR包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B7%E6%B7%86-Obfuscation"><span class="nav-text">混淆 Obfuscation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
