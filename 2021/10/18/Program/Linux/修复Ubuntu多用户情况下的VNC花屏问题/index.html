@@ -9,7 +9,7 @@
     
     <title>
         
-            TinyB: org.bluez.Error.NotReady问题修复 |
+            修复Ubuntu多用户情况下的VNC花屏问题 |
         
         Thinkful
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">TinyB: org.bluez.Error.NotReady问题修复</span>
+            <span class="title-hover-animation">修复Ubuntu多用户情况下的VNC花屏问题</span>
         </div>
 
         
@@ -141,7 +141,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-10-13 19:43:21
+        <i class="fas fa-edit"></i>&nbsp;2021-10-18 19:16:48
     </span>
     
         <span class="article-categories article-meta-item">
@@ -153,7 +153,7 @@
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/Linux/Bluetooth/">Bluetooth</a>&nbsp;
+                        &gt; <a href="/categories/Linux/VNC/">VNC</a>&nbsp;
                     </li>
                 
             </ul>
@@ -188,30 +188,32 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><strong>硬件：</strong> 树莓派4B<br><strong>系统：</strong> Arch Linux</p>
-<p>在上述环境下，使用TinyB（依赖Bluez）进行蓝牙相关功能的调用，报错如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tinyb.BluetoothException: GDBus.Error:org.bluez.Error.NotReady: Resource Not Ready</span><br></pre></td></tr></table></figure>
+            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>Ubuntu 21.04</li>
+<li>VNC4Server</li>
+<li>桌面环境：xfce4</li>
+</ul>
+<h2 id="花屏修复"><a href="#花屏修复" class="headerlink" title="花屏修复"></a>花屏修复</h2><p><img src="https://i.loli.net/2021/10/18/g6oibR1lUY79P4k.jpg"></p>
+<p><strong>调整<code>xstartup</code>文件</strong></p>
+<ul>
+<li>若是root环境，文件位于<code>/root/.vnc/xstartup</code></li>
+<li>若是其他用户环境，文件位于<code>~/.vnc/xstartup</code></li>
+</ul>
+<p>以普通用户为例(使用xfce4桌面)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">vim ~/.vnc/xstartup</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 原始内容为:</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line"><span class="meta">#</span><span class="bash">x-terminal-emulator -geometry 80x24+10+10 -ls -title <span class="string">&quot;<span class="variable">$VNCDESKTOP</span> Desktop&quot;</span> &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash">x-window-manager &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Fix to make GNOME work</span></span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line">/etc/X11/Xsession</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案1-修改为以下内容:</span></span><br><span class="line"></span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案2-修改为以下内容:</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">startxfce4 &amp;</span><br></pre></td></tr></table></figure>
 
-<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>此问题可能有两种原因：</p>
-<ol>
-<li>Bluetooth软件被禁用</li>
-<li>蓝牙服务虽已启动，但是开关未打开（power off状态）</li>
-</ol>
-<p>修复方式包括：</p>
-<ol>
-<li>立即打开蓝牙开关</li>
-<li>设置蓝牙服务启动后，自动打开开关</li>
-</ol>
-<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><h3 id="1-Blocked"><a href="#1-Blocked" class="headerlink" title="1. Blocked"></a>1. Blocked</h3><p>使用<code>rfkill list</code>命令查看当前无线设备状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rfkill list</span></span><br><span class="line">0: hci0: Bluetooth</span><br><span class="line">        Soft blocked: yes</span><br><span class="line">        Hard blocked: no</span><br><span class="line">1: phy0: Wireless LAN</span><br><span class="line">        Soft blocked: no</span><br><span class="line">        Hard blocked: no</span><br></pre></td></tr></table></figure>
-<p>若蓝牙为block状态，可以使用<code>rfkill unblock all</code>调整为unblock状态，若状态是非block状态，可以继续尝试下述操作</p>
-<h3 id="2-Power"><a href="#2-Power" class="headerlink" title="2. Power"></a>2. Power</h3><h4 id="2-1-调整power状态"><a href="#2-1-调整power状态" class="headerlink" title="2.1 调整power状态"></a>2.1 调整power状态</h4><p>调用<code>bluetoothctl power on</code>命令启动，或者可以先使用<code>bluetoothctl</code>命令进入蓝牙控制台，然后再使用<code>power on</code>命令打开开关<br><img src="https://i.loli.net/2021/10/13/CqYVD6i1lMzy8Sm.jpg"></p>
-<p>此时蓝牙功能已均可正常使用了。</p>
-<h4 id="2-2-设置自启动"><a href="#2-2-设置自启动" class="headerlink" title="2.2 设置自启动"></a>2.2 设置自启动</h4><p>编辑<code>/etc/bluetooth/bluetooth.conf</code>文件中的<code>AutoEnable=false</code>部分，调整为<code>true</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/bluetooth/bluetooth.conf</span><br></pre></td></tr></table></figure>
+<p>调整完成后，使用下述命令给文件提权</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x ~\.vnc\xstartup</span><br></pre></td></tr></table></figure>
 
-<p>此时在设备重启后，蓝牙服务会自动启动并处理打开状态。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/508221/bluetooth-service-running-but-bluetoothctl-says-org-bluez-error-notready" >bluetooth.service running, but bluetoothctl says “org.bluez.Error.NotReady”<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>重启系统或重启VNCServer</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
+<p>上述命令可以列举出所有VNC服务，然后使用<code>vncserver -kill :YourVNCServerNumber</code>即可关闭对应的vnc服务</p>
+<p><strong>Note：</strong><br><code>vncserver -kill :number</code>命令，仅可关闭当前用户的vnc服务</p>
+<p>最后，使用<code>vncserver</code>命令重新启动一个vnc服务即可<br><img src="https://i.loli.net/2021/10/18/yUJYZh3ap85MjkT.jpg"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="http://manpages.ubuntu.com/manpages/bionic/en/man1/vnc4server.1.html#name" >vnc4server<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://help.ubuntu.com/community/VNC/Servers" >VNC/Servers<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04" >How to Install and Configure VNC on Ubuntu 20.04<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.google.com.hk/search?q=Ubuntu+VNC%E8%8A%B1%E5%B1%8F+%E5%A4%9A%E7%94%A8%E6%88%B7" >Ubuntu安装vnc并解决花屏问题<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_Network_Computing" >Virtual Network Computing<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -220,29 +222,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/10/18/Program/Linux/%E4%BF%AE%E5%A4%8DUbuntu%E5%A4%9A%E7%94%A8%E6%88%B7%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84VNC%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">修复Ubuntu多用户情况下的VNC花屏问题</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/10/13/Basic/Mac/MacOS%E4%B8%8B%E4%BD%BF%E7%94%A8dd%E5%91%BD%E4%BB%A4%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8%E7%9B%98/"
+                           href="/2021/10/13/Program/Linux/TinyB-org-bluez-Error-NotReady%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">MacOS下使用dd命令制作启动盘</span>
+                                <span class="post-nav-title-item">TinyB: org.bluez.Error.NotReady问题修复</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -351,7 +338,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%8E%9F%E5%9B%A0"><span class="nav-text">问题原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8D"><span class="nav-text">修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Blocked"><span class="nav-text">1. Blocked</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Power"><span class="nav-text">2. Power</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E8%B0%83%E6%95%B4power%E7%8A%B6%E6%80%81"><span class="nav-text">2.1 调整power状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="nav-text">2.2 设置自启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%B1%E5%B1%8F%E4%BF%AE%E5%A4%8D"><span class="nav-text">花屏修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
