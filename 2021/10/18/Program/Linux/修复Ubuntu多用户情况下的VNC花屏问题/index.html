@@ -207,7 +207,7 @@
 
 <p><strong>重启系统或重启VNCServer</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
-<p>上述命令可以列举出所有VNC服务，然后使用<code>vncserver -kill :YourVNCServerNumber</code>即可关闭对应的vnc服务</p>
+<p>上述命令可以列举出所有VNC服务，然后使用<code>vncserver -kill :number</code>即可关闭对应的vnc服务</p>
 <p><strong>Note：</strong><br><code>vncserver -kill :number</code>命令，仅可关闭当前用户的vnc服务</p>
 <p>最后，使用<code>vncserver</code>命令重新启动一个vnc服务即可<br><img src="https://i.loli.net/2021/10/18/yUJYZh3ap85MjkT.jpg"></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="http://manpages.ubuntu.com/manpages/bionic/en/man1/vnc4server.1.html#name" >vnc4server<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://help.ubuntu.com/community/VNC/Servers" >VNC/Servers<i class="fas fa-external-link-alt"></i></a></p>
