@@ -88,6 +88,13 @@
 
   
   <url>
+    <loc>http://thinkful.ink/tags/Basic/</loc>
+    <lastmod>2021-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://thinkful.ink/tags/regulation/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
@@ -123,13 +130,6 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/Basic/</loc>
-    <lastmod>2021-10-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://thinkful.ink/tags/Wox/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
@@ -144,6 +144,20 @@
   </url>
   
 
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Tools/</loc>
+    <lastmod>2021-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Basic/</loc>
+    <lastmod>2021-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://thinkful.ink/categories/Regulation/</loc>
@@ -174,14 +188,14 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Basic/</loc>
+    <loc>http://thinkful.ink/categories/Tools/Windows/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Tools/</loc>
+    <loc>http://thinkful.ink/categories/Tools/Web/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -195,13 +209,6 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Linux/Bluetooth/</loc>
-    <lastmod>2021-10-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://thinkful.ink/categories/Linux/VNC/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
@@ -209,7 +216,7 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Tools/Windows/</loc>
+    <loc>http://thinkful.ink/categories/Linux/Bluetooth/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -217,13 +224,6 @@
   
   <url>
     <loc>http://thinkful.ink/categories/Java/Compile/Decompile/</loc>
-    <lastmod>2021-10-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Tools/Web/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
