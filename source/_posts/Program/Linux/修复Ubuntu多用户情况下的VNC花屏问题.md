@@ -59,7 +59,7 @@ sudo chmod +x ~\.vnc\xstartup
 ```Shell
 ps -ef | grep vnc
 ```
-上述命令可以列举出所有VNC服务，然后使用`vncserver -kill :YourVNCServerNumber`即可关闭对应的vnc服务
+上述命令可以列举出所有VNC服务，然后使用`vncserver -kill :number`即可关闭对应的vnc服务
 
 **Note：**
 `vncserver -kill :number`命令，仅可关闭当前用户的vnc服务
