@@ -9,7 +9,7 @@
     
     <title>
         
-            修复Ubuntu多用户情况下的VNC花屏问题 |
+            iOS BLE MTU |
         
         Thinkful
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">修复Ubuntu多用户情况下的VNC花屏问题</span>
+            <span class="title-hover-animation">iOS BLE MTU</span>
         </div>
 
         
@@ -141,7 +141,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-10-18 19:16:48
+        <i class="fas fa-edit"></i>&nbsp;2021-10-21 20:12:16
     </span>
     
         <span class="article-categories article-meta-item">
@@ -149,31 +149,16 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Linux/">Linux</a>&nbsp;
+                        <a href="/categories/Program/">Program</a>&nbsp;
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/Linux/VNC/">VNC</a>&nbsp;
+                        &gt; <a href="/categories/Program/iOS/">iOS</a>&nbsp;
                     </li>
                 
             </ul>
         </span>
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Linux/">Linux</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/BugFix/">BugFix</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
@@ -188,33 +173,7 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
-<li>Ubuntu 21.04</li>
-<li>VNC4Server</li>
-<li>桌面环境：xfce4</li>
-</ul>
-<h2 id="花屏修复"><a href="#花屏修复" class="headerlink" title="花屏修复"></a>花屏修复</h2><p><img src="https://i.loli.net/2021/10/18/g6oibR1lUY79P4k.jpg"></p>
-<p><strong>调整<code>xstartup</code>文件</strong></p>
-<ul>
-<li>若是root环境，文件位于<code>/root/.vnc/xstartup</code></li>
-<li>若是其他用户环境，文件位于<code>~/.vnc/xstartup</code></li>
-</ul>
-<p>以普通用户为例(使用xfce4桌面)：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">vim ~/.vnc/xstartup</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 原始内容为:</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line"><span class="meta">#</span><span class="bash">x-terminal-emulator -geometry 80x24+10+10 -ls -title <span class="string">&quot;<span class="variable">$VNCDESKTOP</span> Desktop&quot;</span> &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash">x-window-manager &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Fix to make GNOME work</span></span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line">/etc/X11/Xsession</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案1-修改为以下内容:</span></span><br><span class="line"></span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案2-修改为以下内容:</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">startxfce4 &amp;</span><br></pre></td></tr></table></figure>
-
-<p>调整完成后，使用下述命令给文件提权</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x ~\.vnc\xstartup</span><br></pre></td></tr></table></figure>
-
-<p><strong>重启系统或重启VNCServer</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
-<p>上述命令可以列举出所有VNC服务，然后使用<code>vncserver -kill :number</code>即可关闭对应的vnc服务</p>
-<p><strong>Note：</strong><br><code>vncserver -kill :number</code>命令，仅可关闭当前用户的vnc服务</p>
-<p>最后，使用<code>vncserver</code>命令重新启动一个vnc服务即可<br><img src="https://i.loli.net/2021/10/18/yUJYZh3ap85MjkT.jpg"></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="http://manpages.ubuntu.com/manpages/bionic/en/man1/vnc4server.1.html#name" >vnc4server<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://help.ubuntu.com/community/VNC/Servers" >VNC/Servers<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04" >How to Install and Configure VNC on Ubuntu 20.04<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.google.com.hk/search?q=Ubuntu+VNC%E8%8A%B1%E5%B1%8F+%E5%A4%9A%E7%94%A8%E6%88%B7" >Ubuntu安装vnc并解决花屏问题<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_Network_Computing" >Virtual Network Computing<i class="fas fa-external-link-alt"></i></a></p>
-
+            
         </div>
 
         
@@ -225,13 +184,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/10/19/Basic/Bluetooth/BLE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"
+                           href="/2021/10/22/Basic/Bluetooth/%E8%93%9D%E7%89%99%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD%E9%9B%86-Bluetooth-nomenclature/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">BLE基础知识点整理</span>
+                                <span class="post-nav-title-item">蓝牙常用术语集(Bluetooth nomenclature)</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -241,10 +200,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/10/13/Program/Linux/TinyB-org-bluez-Error-NotReady%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/"
+                           href="/2021/10/19/Basic/Bluetooth/BLE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">TinyB: org.bluez.Error.NotReady问题修复</span>
+                                <span class="post-nav-title-item">BLE基础知识点整理</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -353,7 +312,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%B1%E5%B1%8F%E4%BF%AE%E5%A4%8D"><span class="nav-text">花屏修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+        
     </div>
 </div>
         </aside>

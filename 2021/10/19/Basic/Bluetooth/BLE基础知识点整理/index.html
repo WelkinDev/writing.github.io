@@ -9,7 +9,7 @@
     
     <title>
         
-            修复Ubuntu多用户情况下的VNC花屏问题 |
+            BLE基础知识点整理 |
         
         Thinkful
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">修复Ubuntu多用户情况下的VNC花屏问题</span>
+            <span class="title-hover-animation">BLE基础知识点整理</span>
         </div>
 
         
@@ -141,7 +141,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-10-18 19:16:48
+        <i class="fas fa-edit"></i>&nbsp;2021-10-19 21:27:22
     </span>
     
         <span class="article-categories article-meta-item">
@@ -149,31 +149,16 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Linux/">Linux</a>&nbsp;
+                        <a href="/categories/Basic/">Basic</a>&nbsp;
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/Linux/VNC/">VNC</a>&nbsp;
+                        &gt; <a href="/categories/Basic/Bluetooth/">Bluetooth</a>&nbsp;
                     </li>
                 
             </ul>
         </span>
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Linux/">Linux</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/BugFix/">BugFix</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
@@ -188,32 +173,18 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
-<li>Ubuntu 21.04</li>
-<li>VNC4Server</li>
-<li>桌面环境：xfce4</li>
-</ul>
-<h2 id="花屏修复"><a href="#花屏修复" class="headerlink" title="花屏修复"></a>花屏修复</h2><p><img src="https://i.loli.net/2021/10/18/g6oibR1lUY79P4k.jpg"></p>
-<p><strong>调整<code>xstartup</code>文件</strong></p>
-<ul>
-<li>若是root环境，文件位于<code>/root/.vnc/xstartup</code></li>
-<li>若是其他用户环境，文件位于<code>~/.vnc/xstartup</code></li>
-</ul>
-<p>以普通用户为例(使用xfce4桌面)：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">vim ~/.vnc/xstartup</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 原始内容为:</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line"><span class="meta">#</span><span class="bash">x-terminal-emulator -geometry 80x24+10+10 -ls -title <span class="string">&quot;<span class="variable">$VNCDESKTOP</span> Desktop&quot;</span> &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash">x-window-manager &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Fix to make GNOME work</span></span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line">/etc/X11/Xsession</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案1-修改为以下内容:</span></span><br><span class="line"></span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案2-修改为以下内容:</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">startxfce4 &amp;</span><br></pre></td></tr></table></figure>
+            <h2 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h2><p><a class="link"   target="_blank" rel="noopener" href="https://learning.oreilly.com/library/view/building-bluetooth-low/9781786461087/3323a094-8c3b-4c99-b28a-b284745a61b5.xhtml" >oreilly<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Attribute Protocol (ATT) and Generic Attribute Profile (GATT)</span><br><span class="line"></span><br><span class="line">Bluetooth Low Energy brought two core specifications and every Low Energy profile is supposed to use them. Attribute Protocol and Generic Attribute Profile.</span><br><span class="line"></span><br><span class="line">Attribute Protocol is a low-level layer that defines how to transfer data. It identifies the device discovery, reading and writing attributes on a fellow device. On the other hand, Generic Attribute Profile is built on the top of ATT to give high-level services to the manufacturer implementing LE. These services are basically used to manage the data transfer process in a more systematic way. For example, GATT defines if a device&#x27;s role is going to be Server or Client.</span><br><span class="line"></span><br><span class="line">An interesting thing about ATT and GATT is that they are not transport-layer specifications, that means that they can be implemented on BR/EDR or LE. GATT is a mandatory entity in LE and used to discover services and characteristics. The GATT server listens to an ATT requests and confirmations sent by GATT client. GATT server stores, process and transfer the data to the client. Another role of the GATT is that it defines the data arrangement on the server side so that the client can read it accordingly. The data transfer between GATT server and GATT client is called an &quot;Attribute&quot;. An attribute is uniquely identified by a Universally Unique Identifier (UUID) which is 128 bits long string ID.</span><br><span class="line"></span><br><span class="line">The Bluetooth system consists of four base layers. Radio (Physical layer), Baseband, Link Layer, and L2CAP.</span><br><span class="line">More information about the working on these layers can be found in the core specification document: https://www.bluetooth.com/specifications/adopted-specifications.</span><br></pre></td></tr></table></figure>
 
-<p>调整完成后，使用下述命令给文件提权</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x ~\.vnc\xstartup</span><br></pre></td></tr></table></figure>
 
-<p><strong>重启系统或重启VNCServer</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
-<p>上述命令可以列举出所有VNC服务，然后使用<code>vncserver -kill :number</code>即可关闭对应的vnc服务</p>
-<p><strong>Note：</strong><br><code>vncserver -kill :number</code>命令，仅可关闭当前用户的vnc服务</p>
-<p>最后，使用<code>vncserver</code>命令重新启动一个vnc服务即可<br><img src="https://i.loli.net/2021/10/18/yUJYZh3ap85MjkT.jpg"></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="http://manpages.ubuntu.com/manpages/bionic/en/man1/vnc4server.1.html#name" >vnc4server<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://help.ubuntu.com/community/VNC/Servers" >VNC/Servers<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04" >How to Install and Configure VNC on Ubuntu 20.04<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.google.com.hk/search?q=Ubuntu+VNC%E8%8A%B1%E5%B1%8F+%E5%A4%9A%E7%94%A8%E6%88%B7" >Ubuntu安装vnc并解决花屏问题<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_Network_Computing" >Virtual Network Computing<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="Record"><a href="#Record" class="headerlink" title="Record"></a>Record</h2><p><strong>BLE 5.2 Doc:</strong><br>Vol 1, Part A, 1.4 NOMENCLATURE （Page: 196)</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/28793182/smart-bluetooth-gatt-vs-att-what-are-the-differences-between-them/28799589" >Smart Bluetooth: GATT Vs. ATT - what are the differences between them?<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.carrentalgateway.com/glossary/generic-attribute-profile/" >Generic Attribute Profile (GATT)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.engeniustech.com/technical-papers/bluetooth-low-energy.pdf" >Bluetooth Low-Energy 5.0 Throughput Testing<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://devzone.nordicsemi.com/f/nordic-q-a/44825/ios-mtu-size-why-only-185-bytes" >iOS MTU size why only 185 bytes<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41977767/negotiate-ble-mtu-on-ios/42336001#42336001" >Negotiate BLE MTU on iOS<i class="fas fa-external-link-alt"></i></a></p>
+<p>// Apple<br><a class="link"   target="_blank" rel="noopener" href="https://developer.apple.com/documentation/corebluetooth/cbperipheral/1620312-maximumwritevaluelengthfortype" >maximumWriteValueLengthForType:<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://developer.apple.com/documentation/corebluetooth/cbcharacteristicwritetype" >CBCharacteristicWriteType<i class="fas fa-external-link-alt"></i></a></p>
+<p>// Bluetooth Specification<br><a class="link"   target="_blank" rel="noopener" href="https://www.bluetooth.com/specifications/specs/core-specification-4-0/" >Core Specification 4.0<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.bluetooth.com/specifications/specs/core-specification-4-2/" >Core Specification 4.2<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.bluetooth.com/bluetooth-resources/bluetooth-5-go-faster-go-further/" >Bluetooth Core Specification Version 5.0 Feature Overview<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.bluetooth.com/specifications/specs/core-specification/" >Core Specification 5.3<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -225,13 +196,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/10/19/Basic/Bluetooth/BLE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"
+                           href="/2021/10/21/Program/iOS/iOS-BLE-MTU/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">BLE基础知识点整理</span>
+                                <span class="post-nav-title-item">iOS BLE MTU</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -241,10 +212,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/10/13/Program/Linux/TinyB-org-bluez-Error-NotReady%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/"
+                           href="/2021/10/18/Program/Linux/%E4%BF%AE%E5%A4%8DUbuntu%E5%A4%9A%E7%94%A8%E6%88%B7%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84VNC%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">TinyB: org.bluez.Error.NotReady问题修复</span>
+                                <span class="post-nav-title-item">修复Ubuntu多用户情况下的VNC花屏问题</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -353,7 +324,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%B1%E5%B1%8F%E4%BF%AE%E5%A4%8D"><span class="nav-text">花屏修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Content"><span class="nav-text">Content</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Record"><span class="nav-text">Record</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
