@@ -192,7 +192,7 @@
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
 <li><p>Clone代码至本地</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/intel-iot-devkit/tinyb.git</span><br></pre></td></tr></table></figure></li>
-<li><p>编译前准备<br>后续的编译依赖了CMake（3.1+）、Make、GLib/GIO等，在Manjaro中可以通过安装<code>base-devel</code>包来直接完全基本的开发包。</p>
+<li><p>编译前准备<br>后续的编译依赖了CMake（3.1+）、Make、GLib/GIO等，在Manjaro中可以通过安装<code>base-devel</code>包来直接完成基本开发包的安装。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syu</span><br><span class="line">sudo pacman -S base-devel</span><br></pre></td></tr></table></figure></li>
 <li><p>TinyB编译安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">// cmake .. -DBUILDJAVA=ON // if need java</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></li>
