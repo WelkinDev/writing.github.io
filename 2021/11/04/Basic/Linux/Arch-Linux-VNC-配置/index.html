@@ -9,7 +9,7 @@
     
     <title>
         
-            修复Ubuntu多用户情况下的VNC花屏问题 |
+            Arch Linux VNC 配置 |
         
         Thinkful
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">修复Ubuntu多用户情况下的VNC花屏问题</span>
+            <span class="title-hover-animation">Arch Linux VNC 配置</span>
         </div>
 
         
@@ -141,7 +141,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-10-18 19:16:48
+        <i class="fas fa-edit"></i>&nbsp;2021-11-04 20:17:00
     </span>
     
         <span class="article-categories article-meta-item">
@@ -149,11 +149,15 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Linux/">Linux</a>&nbsp;
+                        <a href="/categories/Arch-Linux/">Arch Linux</a>&nbsp;
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/Linux/VNC/">VNC</a>&nbsp;
+                        &gt; <a href="/categories/Arch-Linux/Manjaro/">Manjaro</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/Arch-Linux/Manjaro/VNC/">VNC</a>&nbsp;
                     </li>
                 
             </ul>
@@ -165,11 +169,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                        <a href="/tags/Arch-Linux/">Arch Linux</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/BugFix/">BugFix</a>&nbsp;
+                        | <a href="/tags/Manjaro/">Manjaro</a>&nbsp;
                     </li>
                 
             </ul>
@@ -188,32 +192,37 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
-<li>Ubuntu 21.04</li>
-<li>VNC4Server</li>
-<li>桌面环境：xfce4</li>
+            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><strong>系统：</strong> Manjaro 21.1.5(Linux 513)<br><strong>VNC:</strong> TigerVNC<br><strong>桌面环境：</strong> xfce</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h3><ul>
+<li><p>更新包管理器环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syu</span><br></pre></td></tr></table></figure></li>
+<li><p>安装<code>TigerVNC</code>以及<code>xfce</code></p>
+</li>
 </ul>
-<h2 id="花屏修复"><a href="#花屏修复" class="headerlink" title="花屏修复"></a>花屏修复</h2><p><img src="https://i.loli.net/2021/10/18/g6oibR1lUY79P4k.jpg"></p>
-<p><strong>调整<code>xstartup</code>文件</strong></p>
-<ul>
-<li>若是root环境，文件位于<code>/root/.vnc/xstartup</code></li>
-<li>若是其他用户环境，文件位于<code>~/.vnc/xstartup</code></li>
-</ul>
-<p>以普通用户为例(使用xfce4桌面)：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">vim ~/.vnc/xstartup</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 原始内容为:</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line"><span class="meta">#</span><span class="bash">x-terminal-emulator -geometry 80x24+10+10 -ls -title <span class="string">&quot;<span class="variable">$VNCDESKTOP</span> Desktop&quot;</span> &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash">x-window-manager &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Fix to make GNOME work</span></span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line">/etc/X11/Xsession</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案1-修改为以下内容:</span></span><br><span class="line"></span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">startxfce4 &amp;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 方案2-修改为以下内容:</span></span><br><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">startxfce4 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman tigervnc xfce4</span><br></pre></td></tr></table></figure>
 
-<p>调整完成后，使用下述命令给文件提权</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x ~\.vnc\xstartup</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>用 <code>vncpasswd</code> 创建密码，它会将哈希处理之后的密码存储在 <code>~/.vnc/passwd</code>。</li>
+<li>编辑 <code>/etc/tigervnc/vncserver.users</code> 来定义用户映射。该文件中定义的每个用户都会拥有对应的端口来运行会话。该文件中的数字对应的是 TCP 端口。默认情况下，:1 是 TCP 端口 5901 (5900+1)。如果需要运行一个并行的服务端，第二个实例可以运行在下一个最大的、未被占用的端口，即 5902 (5900+2)。</li>
+<li>创建 <code>~/.vnc/config</code>，其中至少要有一行定义会话的类型，比如 <code>session=xfce</code> （可以将xfce替换为你想要运行的桌面环境）。你可以通过查看 <code>/usr/share/xsessions/</code> 里的 <code>.desktop</code> 文件来知道有哪些桌面环境在当前系统上可以使用。</li>
+</ol>
+<p><code>/etc/tigervnc/vncserver.users</code>文件示例配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1=YourUserName</span><br></pre></td></tr></table></figure>
 
-<p><strong>重启系统或重启VNCServer</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep vnc</span><br></pre></td></tr></table></figure>
-<p>上述命令可以列举出所有VNC服务，然后使用<code>vncserver -kill :number</code>即可关闭对应的vnc服务</p>
-<p><strong>Note：</strong><br><code>vncserver -kill :number</code>命令，仅可关闭当前用户的vnc服务</p>
-<p>最后，使用<code>vncserver</code>命令重新启动一个vnc服务即可<br><img src="https://i.loli.net/2021/10/18/yUJYZh3ap85MjkT.jpg"></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="http://manpages.ubuntu.com/manpages/bionic/en/man1/vnc4server.1.html#name" >vnc4server<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://help.ubuntu.com/community/VNC/Servers" >VNC/Servers<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04" >How to Install and Configure VNC on Ubuntu 20.04<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.google.com.hk/search?q=Ubuntu+VNC%E8%8A%B1%E5%B1%8F+%E5%A4%9A%E7%94%A8%E6%88%B7" >Ubuntu安装vnc并解决花屏问题<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_Network_Computing" >Virtual Network Computing<i class="fas fa-external-link-alt"></i></a></p>
+<p><code>~/.vnc/config</code>文件示例配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session=xfce</span><br><span class="line">geometry=1920x1080 // resolution</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h3><p><strong>启动</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start vncserver@:1</span><br></pre></td></tr></table></figure>
+<p><strong>停止</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop vncserver@:1</span><br></pre></td></tr></table></figure>
+<p><strong>查看当前状态</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">systemctl status vncserver@:1.service</span><br><span class="line"></span><br><span class="line">// It will be shown below</span><br><span class="line">● vncserver@:1.service - Remote desktop service (VNC)</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/system/vncserver@.service; enabled; vendor preset: disabled)</span><br><span class="line">     Active: active (running) since Tue 2021-10-05 04:21:35 CST; 2h 58min ago</span><br><span class="line">    Process: 520 ExecStart=/usr/bin/vncsession-start :1 (code=exited, status=0/SUCCESS)</span><br><span class="line">   Main PID: 532 (vncsession)</span><br><span class="line">      Tasks: 1 (limit: 18853)</span><br><span class="line">     Memory: 2.2M</span><br><span class="line">        CPU: 16ms</span><br><span class="line">     CGroup: /system.slice/system-vncserver.slice/vncserver@:1.service</span><br><span class="line">             ‣ 532 /usr/bin/vncsession yanqing :1</span><br><span class="line"></span><br><span class="line">10月 05 04:21:35 yanqing-optiplex7090 systemd[1]: Starting Remote desktop service (VNC)...</span><br><span class="line">10月 05 04:21:35 yanqing-optiplex7090 systemd[1]: Started Remote desktop service (VNC).</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置开机自启动</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable vncserver@:1.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/TigerVNC" >TigerVNC<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Xfce" >Xfce<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -222,29 +231,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/10/19/Basic/Bluetooth/BLE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">BLE基础知识点整理</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/10/13/Program/Linux/TinyB-org-bluez-Error-NotReady%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/"
+                           href="/2021/10/26/Program/Linux/Manjaro%E4%B8%8B%E7%9A%84TinyB%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">TinyB: org.bluez.Error.NotReady问题修复</span>
+                                <span class="post-nav-title-item">Manjaro下的TinyB编译安装</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -353,7 +347,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%B1%E5%B1%8F%E4%BF%AE%E5%A4%8D"><span class="nav-text">花屏修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="nav-text">准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="nav-text">启动与停止</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
