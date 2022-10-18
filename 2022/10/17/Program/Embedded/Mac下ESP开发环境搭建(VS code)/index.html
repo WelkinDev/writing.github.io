@@ -9,7 +9,7 @@
     
     <title>
         
-            Arch Linux VNC 配置 |
+            Mac下ESP开发环境搭建(VS Code) |
         
         Thinkful
     </title>
@@ -123,7 +123,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Arch Linux VNC 配置</span>
+            <span class="title-hover-animation">Mac下ESP开发环境搭建(VS Code)</span>
         </div>
 
         
@@ -141,7 +141,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-11-04 20:17:00
+        <i class="fas fa-edit"></i>&nbsp;2022-10-17 16:18:10
     </span>
     
         <span class="article-categories article-meta-item">
@@ -149,15 +149,11 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Arch-Linux/">Arch Linux</a>&nbsp;
+                        <a href="/categories/ESP/">ESP</a>&nbsp;
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/Arch-Linux/Manjaro/">Manjaro</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/Arch-Linux/Manjaro/VNC/">VNC</a>&nbsp;
+                        &gt; <a href="/categories/ESP/%E8%AF%91%E6%96%87/">译文</a>&nbsp;
                     </li>
                 
             </ul>
@@ -169,11 +165,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Manjaro/">Manjaro</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Arch-Linux/">Arch Linux</a>&nbsp;
+                        <a href="/tags/ESP/">ESP</a>&nbsp;
                     </li>
                 
             </ul>
@@ -192,37 +184,22 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><strong>硬件：</strong> Dell Optiplex 7090<br><strong>系统：</strong> Manjaro 21.1.5(Linux 513)<br><strong>VNC:</strong> TigerVNC<br><strong>桌面环境：</strong> xfce</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h3><ul>
-<li><p>更新包管理器环境</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syu</span><br></pre></td></tr></table></figure></li>
-<li><p>安装<code>TigerVNC</code>以及<code>xfce</code></p>
+            <h1 id="ESP开发环境搭建-VS-Code"><a href="#ESP开发环境搭建-VS-Code" class="headerlink" title="ESP开发环境搭建(VS Code)"></a>ESP开发环境搭建(VS Code)</h1><ol>
+<li><p>下载并安装<a class="link"   target="_blank" rel="noopener" href="https://code.visualstudio.com/" >Visual Studio Code<i class="fas fa-external-link-alt"></i></a>.</p>
 </li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S tigervnc xfce4</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
-<li>用 <code>vncpasswd</code> 创建密码，它会将哈希处理之后的密码存储在 <code>~/.vnc/passwd</code>。</li>
-<li>编辑 <code>/etc/tigervnc/vncserver.users</code> 来定义用户映射。该文件中定义的每个用户都会拥有对应的端口来运行会话。该文件中的数字对应的是 TCP 端口。默认情况下，:1 是 TCP 端口 5901 (5900+1)。如果需要运行一个并行的服务端，第二个实例可以运行在下一个最大的、未被占用的端口，即 5902 (5900+2)。</li>
-<li>创建 <code>~/.vnc/config</code>，其中至少要有一行定义会话的类型，比如 <code>session=xfce</code> （可以将xfce替换为你想要运行的桌面环境）。你可以通过查看 <code>/usr/share/xsessions/</code> 里的 <code>.desktop</code> 文件来知道有哪些桌面环境在当前系统上可以使用。</li>
+<li><p>通过单击VS Code一侧的活动栏中的扩展图标，或使用快捷键 <code>⇧``⌘``X</code>打开扩展视图。</p>
+</li>
+<li><p>使用任何相关关键字搜索扩展，例如 <code>espressif</code>、<code>esp-idf</code>、<code>esp32</code>、<code>esp32s2</code> 等。</p>
+</li>
+<li><p>安装扩展。</p>
+</li>
+<li><p>安装<a class="link"   target="_blank" rel="noopener" href="https://github.com/espressif/vscode-esp-idf-extension/blob/master/README.md#Prerequisites" >ESP-IDF依赖<i class="fas fa-external-link-alt"></i></a>，如果使用 WSL2，则安装 <a class="link"   target="_blank" rel="noopener" href="https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/WSL.md" >WSL 文档<i class="fas fa-external-link-alt"></i></a>中指定的所需包。<br><img src="https://s2.loli.net/2022/10/18/EzWvbwGi1QtukBl.png"></p>
+</li>
+<li><p>（可选）按 <code>F1</code> 并键入 <em>ESP-IDF：选择保存配置设置的位置</em>，可以是用户设置、工作区设置或工作区文件夹设置。 请查看<a class="link"   target="_blank" rel="noopener" href="https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/MULTI_PROJECTS.md" >处理多个项目<i class="fas fa-external-link-alt"></i></a>以获取更多信息。 默认为用户设置。</p>
+</li>
+<li></li>
 </ol>
-<p><code>/etc/tigervnc/vncserver.users</code>文件示例配置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:1=YourUserName</span><br></pre></td></tr></table></figure>
-
-<p><code>~/.vnc/config</code>文件示例配置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session=xfce</span><br><span class="line">geometry=1920x1080 // resolution</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h3><p><strong>启动</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start vncserver@:1</span><br></pre></td></tr></table></figure>
-<p><strong>停止</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop vncserver@:1</span><br></pre></td></tr></table></figure>
-<p><strong>查看当前状态</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">systemctl status vncserver@:1.service</span><br><span class="line"></span><br><span class="line">// It will be shown below</span><br><span class="line">● vncserver@:1.service - Remote desktop service (VNC)</span><br><span class="line">     Loaded: loaded (/usr/lib/systemd/system/vncserver@.service; enabled; vendor preset: disabled)</span><br><span class="line">     Active: active (running) since Tue 2021-10-05 04:21:35 CST; 2h 58min ago</span><br><span class="line">    Process: 520 ExecStart=/usr/bin/vncsession-start :1 (code=exited, status=0/SUCCESS)</span><br><span class="line">   Main PID: 532 (vncsession)</span><br><span class="line">      Tasks: 1 (limit: 18853)</span><br><span class="line">     Memory: 2.2M</span><br><span class="line">        CPU: 16ms</span><br><span class="line">     CGroup: /system.slice/system-vncserver.slice/vncserver@:1.service</span><br><span class="line">             ‣ 532 /usr/bin/vncsession yanqing :1</span><br><span class="line"></span><br><span class="line">10月 05 04:21:35 yanqing-optiplex7090 systemd[1]: Starting Remote desktop service (VNC)...</span><br><span class="line">10月 05 04:21:35 yanqing-optiplex7090 systemd[1]: Started Remote desktop service (VNC).</span><br></pre></td></tr></table></figure>
-
-<p><strong>设置开机自启动</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable vncserver@:1.service</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/TigerVNC" >TigerVNC<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Xfce" >Xfce<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md" >vscode-esp-idf-extension install<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -234,13 +211,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/11/23/Basic/Linux/Manjaro%E5%AE%89%E8%A3%85VSCode/"
+                           href="/2022/10/17/Program/Embedded/Mac%E4%B8%8BESP%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Manjaro安装VSCode</span>
+                                <span class="post-nav-title-item">Mac下ESP依赖环境安装</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -250,10 +227,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/10/26/Program/Linux/Manjaro%E4%B8%8B%E7%9A%84TinyB%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"
+                           href="/2022/02/23/Basic/Linux/ArchLinux-Manjaro-%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4Java%E7%89%88%E6%9C%AC/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Manjaro下的TinyB编译安装</span>
+                                <span class="post-nav-title-item">ArchLinux/Manjaro 修改默认Java版本</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -362,7 +339,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="nav-text">准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="nav-text">启动与停止</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ESP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-VS-Code"><span class="nav-text">ESP开发环境搭建(VS Code)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
