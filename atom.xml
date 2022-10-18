@@ -92,9 +92,9 @@
     <category term="Java" scheme="http://thinkful.ink/categories/ArchLinux/Java/"/>
     
     
-    <category term="ArchLinux" scheme="http://thinkful.ink/tags/ArchLinux/"/>
-    
     <category term="Java" scheme="http://thinkful.ink/tags/Java/"/>
+    
+    <category term="ArchLinux" scheme="http://thinkful.ink/tags/ArchLinux/"/>
     
   </entry>
   
@@ -211,9 +211,9 @@
     <category term="VNC" scheme="http://thinkful.ink/categories/Arch-Linux/Manjaro/VNC/"/>
     
     
-    <category term="Manjaro" scheme="http://thinkful.ink/tags/Manjaro/"/>
-    
     <category term="Arch Linux" scheme="http://thinkful.ink/tags/Arch-Linux/"/>
+    
+    <category term="Manjaro" scheme="http://thinkful.ink/tags/Manjaro/"/>
     
   </entry>
   

@@ -165,49 +165,7 @@
 
   
   <url>
-    <loc>http://thinkful.ink/tags/Basic/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/tags/Manjaro/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/tags/ArchLinux/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/tags/Java/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/tags/MySQL/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/tags/Access/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/tags/ESP/</loc>
+    <loc>http://thinkful.ink/tags/practice/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -221,14 +179,28 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/practice/</loc>
+    <loc>http://thinkful.ink/tags/Java/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/Arch-Linux/</loc>
+    <loc>http://thinkful.ink/tags/Linux/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/tags/BugFix/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/tags/TinyB/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -249,28 +221,49 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/Linux/</loc>
+    <loc>http://thinkful.ink/tags/MySQL/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/TinyB/</loc>
+    <loc>http://thinkful.ink/tags/Access/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/BugFix/</loc>
+    <loc>http://thinkful.ink/tags/Basic/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://thinkful.ink/tags/hexo/</loc>
+    <loc>http://thinkful.ink/tags/ESP/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/tags/Arch-Linux/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/tags/Manjaro/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/tags/ArchLinux/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -278,6 +271,13 @@
   
   <url>
     <loc>http://thinkful.ink/tags/Wox/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/tags/hexo/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -293,42 +293,7 @@
 
   
   <url>
-    <loc>http://thinkful.ink/categories/Basic/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Tools/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Manjaro/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/ArchLinux/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/MySQL/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/ESP/</loc>
+    <loc>http://thinkful.ink/categories/cryptology/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -342,28 +307,7 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/cryptology/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Arch-Linux/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/ArchLinux/Java/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/iOS/</loc>
+    <loc>http://thinkful.ink/categories/Java/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -377,56 +321,7 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/ESP/%E8%AF%91%E6%96%87/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Tools/Web/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Java/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Tools/Windows/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Arch-Linux/Manjaro/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/iOS/BLE/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Linux/Bluetooth/</loc>
-    <lastmod>2022-10-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Linux/VNC/</loc>
+    <loc>http://thinkful.ink/categories/iOS/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -440,7 +335,70 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Arch-Linux/Manjaro/VNC/</loc>
+    <loc>http://thinkful.ink/categories/MySQL/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Basic/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Linux/Bluetooth/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Tools/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/ESP/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Arch-Linux/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Linux/VNC/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/ArchLinux/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Manjaro/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/iOS/BLE/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -454,7 +412,49 @@
   </url>
   
   <url>
+    <loc>http://thinkful.ink/categories/ESP/%E8%AF%91%E6%96%87/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Arch-Linux/Manjaro/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/ArchLinux/Java/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Tools/Windows/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Tools/Web/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://thinkful.ink/categories/Java/Compile/Decompile/Anti-Decompile/</loc>
+    <lastmod>2022-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://thinkful.ink/categories/Arch-Linux/Manjaro/VNC/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -468,14 +468,14 @@
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Basic/Bluetooth/</loc>
+    <loc>http://thinkful.ink/categories/Program/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://thinkful.ink/categories/Program/</loc>
+    <loc>http://thinkful.ink/categories/Basic/Bluetooth/</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
