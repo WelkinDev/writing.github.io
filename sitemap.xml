@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://thinkful.ink/2023/03/28/Temp/cer/</loc>
-    
-    <lastmod>2023-03-28</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://thinkful.ink/2022/10/17/Program/Embedded/Mac%E4%B8%8BESP%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2022-10-18</lastmod>
@@ -490,13 +483,6 @@
   
   <url>
     <loc>http://thinkful.ink/categories/Program/iOS/</loc>
-    <lastmod>2023-03-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://thinkful.ink/categories/Temp/</loc>
     <lastmod>2023-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
